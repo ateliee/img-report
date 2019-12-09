@@ -7,9 +7,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "node bin/img-report.js",
-    "serve": "webpack-dev-server",
-    "build": "webpack",
+    "start": "node bin/img-report diff ./examples/assets ./examples/dist -f -r",
+    "serve": "node bin/img-report serve -s ./assets/ -d ./dist/",
+    "build": "node bin/img-report build -s ./assets/ -d ./dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

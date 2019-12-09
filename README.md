@@ -18,24 +18,22 @@ npm install ateliee/img-report --save-dev
 
 ### diff画像作成
 ```
-node bin/img-report.js -s ./examples/assets/ -d ./examples/dist
-npm start -- -s ./examples/assets/ -d ./examples/dist
+img-report diff ./assets ./dist
+# 出力フォルダをクリア
+img-report diff ./assets ./dist -f
+# reportも合わせて出力
+img-report diff ./assets ./dist -r
 ```
 
 ### レポート出力
 
-デフォルトでは差分ディレクトリはcwdのassets、diffをdistに設定されます。
 ```
-npm run build 
-# パラメータを変更したい場合
-npm run build -- --env.assets=tmp/assets --env.diff=tmp/diff
+img-report build -s ./assets/ -d ./dist/
 ```
 
 .img-reportが現在のディレクトリに作成されます。
 
 ### サーバー起動
 ```
-npm run serve
-# ブラウザ自動起動
-npm run serve -- --open
+img-report serve -s ./assets/ -d ./dist/
 ```
