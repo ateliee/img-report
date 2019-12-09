@@ -1,7 +1,7 @@
 {
   "name": "img-report",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Extract image differences between directories and output HTML reports",
   "main": "app.js",
   "directories": {
     "lib": "lib"
