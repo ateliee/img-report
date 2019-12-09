@@ -1,2 +1,6 @@
 examples/
 .idea
+logs/
+tmp/
+.img-report/
+node_modules/
