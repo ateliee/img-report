@@ -14,28 +14,34 @@ Extract image differences between directories and output HTML reports
 npm install ateliee/img-report --save-dev
 ```
 
+insert package.json
+```
+  "scripts": {
+    "img-report": "img-report"
+  },
+```
 ## howto
 
 ### diff画像作成
 ```
-node bin/img-report.js -s ./examples/assets/ -d ./examples/dist
-npm start -- -s ./examples/assets/ -d ./examples/dist
+npm run img-report
+npm run img-report -- -s ./examples/assets/ -d ./examples/dist
 ```
 
 ### レポート出力
 
 デフォルトでは差分ディレクトリはcwdのassets、diffをdistに設定されます。
 ```
-npm run build 
+npm run img-report build 
 # パラメータを変更したい場合
-npm run build -- --env.assets=tmp/assets --env.diff=tmp/diff
+npm run img-report build -- --env.assets=tmp/assets --env.diff=tmp/diff
 ```
 
 .img-reportが現在のディレクトリに作成されます。
 
 ### サーバー起動
 ```
-npm run serve
+npm run img-report serve
 # ブラウザ自動起動
-npm run serve -- --open
+npm run img-report serve -- --open
 ```
