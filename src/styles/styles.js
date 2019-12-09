@@ -1,5 +1,5 @@
 
-const drawerWidth = 340;
+const drawerWidth = 300;
 export default theme => ({
     root: {
         display: 'flex',

@@ -2,11 +2,13 @@
 
 Extract image differences between directories and output HTML reports
 
+![](docs/img/screen.png)
+
 ## usage
 * Node 10.13.*
 * [webpack 4.41.2](https://webpack.js.org/)
 * [React 16.12.0](https://ja.reactjs.org/)
-* [resemblejs](https://github.com/rsmbl/Resemble.js)
+* [Resemble.js](https://github.com/rsmbl/Resemble.js)
 * [Material-UI](https://material-ui.com/)
 
 ## install

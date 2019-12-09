@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import UiList from '@material-ui/core/List';
-import {Container, Box, ListItem, ListItemIcon, ListItemText, ListSubheader} from '@material-ui/core';
+import {Container, Box, ListItem, ListItemIcon, ListItemText, ListSubheader, Typography} from '@material-ui/core';
 import styles from  '../styles/styles';
 import DiffImage from '../utils/diff-image'
 
@@ -68,7 +68,7 @@ class List extends React.Component {
             'maxWidth': '100%'
         }
         return <div>
-                    <h2>
+            <Typography variant="h1">
                         {this.props.current_key}
                         ({(() => {
                             let res = [];
@@ -83,18 +83,18 @@ class List extends React.Component {
                             }
                             return res.join('/');
                         })()})
-                    </h2>
+                    </Typography>
             {(() => {
                 if (!this.props.diff) {
-                    return <div>レポートが存在しません</div>
+                    return <Typography variant="h1">レポートが存在しません</Typography>
                 }
                 return (this.state.images.map((f, i) => {
                     return <div key={i} id={'diff'+i}>
-                        <h3>
+                        <Typography variant="h2">
                             {this.getDiffDataCheckIcon(f)}
                             {f}
                             ({this.orgRound(this.getDiffDatawMisMatchPercentage(f), 3)} %)
-                        </h3>
+                        </Typography>
                         <div className="table-responsive">
                             <table className="table">
                                 <thead>

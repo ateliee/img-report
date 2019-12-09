@@ -10,6 +10,7 @@ import {
     MenuItem,
     Button,
     Collapse,
+    MuiThemeProvider,
     ListItem,
     ListItemIcon, ListItemText, Box
 } from "@material-ui/core";
@@ -22,6 +23,7 @@ import UiList from "@material-ui/core/List/List";
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 import _ from "lodash";
 import DiffImage from '../utils/diff-image'
+import theme from '../styles/theme'
 let reports = REPORT_DATA;
 
 class App extends React.Component {
@@ -73,18 +75,16 @@ class App extends React.Component {
         return null;
     }
     changeCurrent(target) {
-        console.log(target)
         this.setState({current_key: target});
     }
     handleClick(event) {
-        this.anchorEl = event.currentTarget;
+        this.setState({anchorEl: event.currentTarget});
     }
     handleClose() {
-        console.log('close')
-        this.anchorEl = null;
+        this.setState({anchorEl: null});
     }
     render () {
-        return <div>
+        return <MuiThemeProvider theme={theme}>
             <CssBaseline />
             <AppBar position="fixed" className={this.classes.appBar}>
                 <Toolbar>
@@ -96,19 +96,24 @@ class App extends React.Component {
                     </Typography>
                     <div className={this.classes.toolbarButtons}>
                     <Button aria-controls="header-menu" color="inherit" aria-haspopup="true" onClick={this.handleClick}>
-                        Open Menu
+                        {this.state.current_key}
                     </Button>
                     <Menu
                         id="header-menu"
                         keepMounted
-                        open={Boolean(this.anchorEl)}
-                        anchorEl={this.anchorEl}
+                        open={Boolean(this.state.anchorEl)}
+                        anchorEl={this.state.anchorEl}
                         onClose={this.handleClose}
                         className={this.classes.toolbarButtonMenu}
                     >
-                        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                        <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                        {(() => {
+                            if (!this.state.reports) {
+                                return
+                            }
+                            return (Object.keys(this.state.reports.diff).map((f, i) => {
+                                return <MenuItem onClick={() => { this.changeCurrent(f); this.handleClose(); }} key={f}>{f}</MenuItem>
+                            }))
+                        })()}
                     </Menu>
                     </div>
                 </Toolbar>
@@ -129,7 +134,7 @@ class App extends React.Component {
                             }
                             return (Object.keys(this.state.reports.diff).map((f, i) => {
                                 return ([
-                                    <ListItem button key={i} component="a" href='#' onClick={ () => this.changeCurrent(f) } key={'files_'+f}>
+                                    <ListItem button component="a" href='#' onClick={ () => this.changeCurrent(f) } key={'files_'+f}>
                                         <ListItemIcon>
                                             <PermMediaIcon />
                                             {/*{this.getDiffDataCheckIcon(f)}*/}
@@ -150,7 +155,7 @@ class App extends React.Component {
                                                         let data = diff ? diff[ff] : null;
                                                         let missMatchs = data ? data.data.rawMisMatchPercentage : 100.0;
 
-                                                        return <ListItem button className={this.classes.nested} key={ff}>
+                                                        return <ListItem button component="a" href={'#diff'+ii} className={this.classes.nested} key={ff}>
                                                             <ListItemIcon>
                                                                 {DiffImage.getMisMatchPercentageIcon(DiffImage.getMisMatchPercentageType(missMatchs))}
                                                             </ListItemIcon>
@@ -177,12 +182,9 @@ class App extends React.Component {
                         Template By: <a href="https://material-ui.com/" target="_blank">Material-UI</a>
                     </Box>
                 </main>
-                <Box textAlign="right">
-                    Template By: <a href="https://material-ui.com/" target="_blank">Material-UI</a>
-                </Box>
-                {/*<JsonDump>{this.props}</JsonDump>*/}
             </div>
-        </div>;
+            {/*<JsonDump>{this.props}</JsonDump>*/}
+        </MuiThemeProvider>;
     }
 }
 export default withStyles(styles)(App);
