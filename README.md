@@ -1,4 +1,6 @@
-# 画像比較レポート
+# Image Report
+
+Extract image differences between directories and output HTML reports
 
 ## usage
 * Node 10.13.*
@@ -9,7 +11,7 @@
 
 ## install
 ```
-npm install
+npm install ateliee/img-report --save-dev
 ```
 
 ## howto
