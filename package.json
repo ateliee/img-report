@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node bin/img-report diff ./examples/assets ./examples/dist -f -r",
-    "serve": "node bin/img-report serve -s ./assets/ -d ./dist/",
+    "serve": "node bin/img-report serve -s ./examples/assets/ -d ./examples/dist/",
     "build": "node bin/img-report build -s ./assets/ -d ./dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

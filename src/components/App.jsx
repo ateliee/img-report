@@ -6,7 +6,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import List from "./List";
 import { withStyles } from '@material-ui/core/styles';
 import styles from "../styles/styles";
-let reports = require(path.join(DIFF_PATH, 'report.json'));
+let reports = REPORT_DATA;
 
 class App extends React.Component {
     constructor(props){

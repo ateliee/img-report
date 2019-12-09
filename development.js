@@ -26,6 +26,8 @@ module.exports = env => {
     if(!diff_path){
         throw new Error('paramaters diff not found or empty.', env.diff);
     }
+    let reports = require(path.join(diff_path, 'report.json'));
+
     console.log('asset path:', assets_path)
     console.log('diff path:', diff_path)
     return {
@@ -60,6 +62,7 @@ module.exports = env => {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
                 ASSETS_PATH: assets_path,
                 DIFF_PATH: diff_path,
+                REPORT_DATA: reports
             }),
             new CopyPlugin([
                 { from: assets_path, to: path.join(dist, config.sourceImageDir) },
