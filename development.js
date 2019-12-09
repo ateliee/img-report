@@ -60,9 +60,9 @@ module.exports = env => {
         plugins: [
             new webpack.DefinePlugin({
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-                ASSETS_PATH: assets_path,
-                DIFF_PATH: diff_path,
-                REPORT_DATA: reports
+                ASSETS_PATH: JSON.stringify(assets_path),
+                DIFF_PATH: JSON.stringify(diff_path),
+                REPORT_DATA: JSON.stringify(reports)
             }),
             new CopyPlugin([
                 { from: assets_path, to: path.join(dist, config.sourceImageDir) },

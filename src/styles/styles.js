@@ -21,6 +21,9 @@ export default theme => ({
     drawerPaper: {
         width: drawerWidth,
     },
+    nested: {
+        paddingLeft: theme.spacing(4),
+    },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),

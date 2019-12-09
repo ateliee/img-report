@@ -4,6 +4,7 @@
 const program = require('commander')
 const pkg = require('../package.json')
 const spawn = require('child_process').spawn;
+const execSync = require('child_process').execSync;
 const path = require('path');
 const file = require('../lib/file');
 
