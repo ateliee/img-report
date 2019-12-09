@@ -86,9 +86,3 @@ program
     })
 ;
 program.parse(process.argv);
-
-// console.error('no command given!');
-// process.exit(1);
-
-// console.log('command:', cmdValue);
-// console.log('environment:', envValue || "no environment given");
