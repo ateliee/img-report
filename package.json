@@ -22,8 +22,12 @@
   "engines": {
     "node": ">= 10.12.0"
   },
-  "author": "",
+  "author": "ateliee <info@ateliee.com> (https://ateliee.com)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ateliee/img-report/issues"
+  },
+  "homepage": "https://github.com/ateliee/img-report/",
   "dependencies": {
     "@material-ui/core": "4.7.2",
     "@material-ui/icons": "4.5.1",
