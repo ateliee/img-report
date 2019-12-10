@@ -28,7 +28,7 @@ class DiffImage {
         }else if (check === 2) {
             return <ErrorIcon color="secondary" />
         }
-        return <HighlightOffIcon />
+        return <HighlightOffIcon color="secondary" />
     }
 }
 export default new DiffImage();
