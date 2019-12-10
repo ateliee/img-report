@@ -4,19 +4,20 @@ Extract image differences between directories and output HTML reports
 
 ![](docs/img/screen.png)
 
-## usage
+## Usage
+
 * Node 10.13.*
 * [webpack 4.41.2](https://webpack.js.org/)
 * [React 16.12.0](https://ja.reactjs.org/)
 * [Resemble.js](https://github.com/rsmbl/Resemble.js)
 * [Material-UI](https://material-ui.com/)
 
-## install
+## Install
 ```
 npm install ateliee/img-report --save-dev
 ```
 
-## howto
+## Howto
 
 ### diff画像作成
 ```
@@ -40,6 +41,6 @@ img-report build -s ./assets/ -d ./dist/
 img-report serve -s ./assets/ -d ./dist/
 ```
 
-### Exmaple Images
+## Exmaple Images
 
 * [Illust AC](https://www.ac-illust.com/)
