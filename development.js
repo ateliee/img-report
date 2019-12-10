@@ -42,7 +42,10 @@ module.exports = env => {
             rules: [
                 {
                     test: /\.jsx$/,
-                    exclude: /node_modules/,
+                    exclude: {
+                        include: /node_modules/,
+                        exclude: /node_modules\/img-report\//,
+                    },
                     loader: 'babel-loader',
                     options: {
                         ...JSON.parse(fs.readFileSync(path.resolve(__dirname, './.babelrc'))),
