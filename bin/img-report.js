@@ -20,8 +20,8 @@ program
     .action(async function (src, dist, opts) {
             let force = (opts.force !== undefined)
             let report = (opts.report !== undefined)
-            let src_path = path.join(process.cwd(), src)
-            let dist_path = path.join(process.cwd(), dist)
+            let src_path = path.resolve(process.cwd(), src)
+            let dist_path = path.resolve(process.cwd(), dist)
 
             console.log('with:');
             console.log('  - source:', src_path);
@@ -47,16 +47,18 @@ program
     .requiredOption('-s, --source <value>', 'source assets directory path', String)
     .requiredOption('-d, --dist <value>', 'dist directory path', String)
     .action(async function (opts) {
-        let config_path = path.join(__dirname, '../webpack.config.js')
+        let config_path = path.resolve(__dirname, '../webpack.config.js')
         console.log('with:');
         console.log('  - options.source:', opts.source);
         console.log('  - options.dist:', opts.dist);
         console.log('  - webpack config:', config_path);
 
-        const webpack =  execSync('which webpack').toString();
-        let proc = spawn(webpack, ['--config', config_path, '--env.assets='+opts.source, '--env.diff='+opts.dist]);
+        let proc = spawn('webpack', ['--config', config_path, '--env.assets='+opts.source, '--env.diff='+opts.dist]);
         console.log("child:" + proc.pid);
         proc.stdout.on('data', (data) => {
+            console.log(data.toString());
+        });
+        proc.stderr.on('data', (data) => {
             console.log(data.toString());
         });
         proc.on('exit', function(){
@@ -71,7 +73,7 @@ program
     .requiredOption('-s, --source <value>', 'source assets directory path', String)
     .requiredOption('-d, --dist <value>', 'dist directory path', String)
     .action(async function (opts) {
-        let config_path = path.join(__dirname, '../webpack.config.js')
+        let config_path = path.resolve(__dirname, '../webpack.config.js')
         console.log('with:');
         console.log('  - options.source:', opts.source);
         console.log('  - options.dist:', opts.dist);

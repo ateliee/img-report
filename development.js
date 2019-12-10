@@ -1,8 +1,9 @@
-import path from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import webpack from 'webpack'
-import CopyPlugin from 'copy-webpack-plugin'
-import config from './config'
+const fs = require('fs');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
+const config = require('./config');
 
 const src  = path.resolve(__dirname, 'src')
 const dist = path.resolve(process.cwd(), '.img-report')
@@ -10,23 +11,23 @@ const dist = path.resolve(process.cwd(), '.img-report')
 module.exports = env => {
     var assets_path = null;
     if(env && env.assets !== undefined){
-        assets_path = path.join(process.cwd(), env.assets);
+        assets_path = path.resolve(process.cwd(), env.assets);
     }else{
-        assets_path = path.join(process.cwd(), 'assets');
+        assets_path = path.resolve(process.cwd(), 'assets');
     }
     if(!assets_path){
         throw new Error('paramaters asset not found or empty.', env.assets);
     }
     var diff_path = null;
     if(env && env.diff !== undefined){
-        diff_path = path.join(process.cwd(), env.diff);
+        diff_path = path.resolve(process.cwd(), env.diff);
     }else{
-        diff_path = path.join(process.cwd(), 'diff');
+        diff_path = path.resolve(process.cwd(), 'diff');
     }
     if(!diff_path){
         throw new Error('paramaters diff not found or empty.', env.diff);
     }
-    let reports = require(path.join(diff_path, 'report.json'));
+    let reports = require(path.resolve(diff_path, 'report.json'));
 
     console.log('asset path:', assets_path)
     console.log('diff path:', diff_path)
@@ -42,7 +43,10 @@ module.exports = env => {
                 {
                     test: /\.jsx$/,
                     exclude: /node_modules/,
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    options: {
+                        ...JSON.parse(fs.readFileSync(path.resolve(__dirname, './.babelrc'))),
+                    }
                 },
                 {
                     test: /\.scss$/,
@@ -65,8 +69,8 @@ module.exports = env => {
                 REPORT_DATA: JSON.stringify(reports)
             }),
             new CopyPlugin([
-                { from: assets_path, to: path.join(dist, config.sourceImageDir) },
-                { from: diff_path, to: path.join(dist, config.diffImageDir) },
+                { from: assets_path, to: path.resolve(dist, config.sourceImageDir) },
+                { from: diff_path, to: path.resolve(dist, config.diffImageDir) },
             ]),
             new HtmlWebpackPlugin({
                 template: src + '/index.html',
