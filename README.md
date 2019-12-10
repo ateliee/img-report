@@ -40,6 +40,6 @@ img-report build -s ./assets/ -d ./dist/
 img-report serve -s ./assets/ -d ./dist/
 ```
 
-### exmaples
+### Exmaple Images
 
 * [Illust AC](https://www.ac-illust.com/)
