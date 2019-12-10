@@ -8,6 +8,7 @@ const execSync = require('child_process').execSync;
 const path = require('path');
 const file = require('../lib/file');
 
+// process.on('unhandledRejection', console.dir);
 program
     .version(pkg.version || '0.1.0');
 // diff image create
@@ -34,8 +35,8 @@ program
                 force
             );
             if(report){
-                    const result =  execSync('node '+__filename+' build -s '+src_path+' -d '+dist_path).toString();
-                    console.log(result);
+                const result =  execSync('node '+__filename+' build -s '+src_path+' -d '+dist_path).toString();
+                console.log(result);
             }
     })
 ;
@@ -52,7 +53,8 @@ program
         console.log('  - options.dist:', opts.dist);
         console.log('  - webpack config:', config_path);
 
-        let proc = spawn('webpack', ['--config', config_path, '--env.assets='+opts.source, '--env.diff='+opts.dist]);
+        const webpack =  execSync('which webpack').toString();
+        let proc = spawn(webpack, ['--config', config_path, '--env.assets='+opts.source, '--env.diff='+opts.dist]);
         console.log("child:" + proc.pid);
         proc.stdout.on('data', (data) => {
             console.log(data.toString());
