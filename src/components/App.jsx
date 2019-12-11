@@ -1,4 +1,3 @@
-import path from 'path'
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {
@@ -24,8 +23,12 @@ import PermMediaIcon from '@material-ui/icons/PermMedia';
 import _ from "lodash";
 import DiffImage from '../utils/diff-image'
 import theme from '../styles/theme'
+import PropTypes from 'prop-types';
 let reports = REPORT_DATA;
 
+App.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
 class App extends React.Component {
     constructor(props){
         super(props);
@@ -110,7 +113,7 @@ class App extends React.Component {
                             if (!this.state.reports) {
                                 return
                             }
-                            return (Object.keys(this.state.reports.diff).map((f, i) => {
+                            return (Object.keys(this.state.reports.diff).map((f) => {
                                 return <MenuItem onClick={() => { this.changeCurrent(f); this.handleClose(); }} key={f}>{f}</MenuItem>
                             }))
                         })()}
@@ -132,7 +135,7 @@ class App extends React.Component {
                             if (!this.state.reports) {
                                 return
                             }
-                            return (Object.keys(this.state.reports.diff).map((f, i) => {
+                            return (Object.keys(this.state.reports.diff).map((f) => {
                                 return ([
                                     <ListItem button component="a" href='#' onClick={ () => this.changeCurrent(f) } key={'files_'+f}>
                                         <ListItemIcon>
@@ -179,7 +182,7 @@ class App extends React.Component {
                         current={this.getCurrent()} current_key={this.state.current_key}
                         diff={this.getCurrentDiff()} />
                     <Box textAlign="right">
-                        Template By: <a href="https://material-ui.com/" target="_blank">Material-UI</a>
+                        Template By: <a href="https://material-ui.com/" target="_blank" rel="noopener noreferrer">Material-UI</a>
                     </Box>
                 </main>
             </div>

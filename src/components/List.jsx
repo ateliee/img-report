@@ -1,14 +1,21 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import LazyLoad from "react-lazyload";
 import JsonDump from  '../utils/jsondump';
 import _ from 'lodash';
 import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import UiList from '@material-ui/core/List';
-import {Container, Box, ListItem, ListItemIcon, ListItemText, ListSubheader, Typography} from '@material-ui/core';
+import {Typography} from '@material-ui/core';
 import styles from  '../styles/styles';
 import DiffImage from '../utils/diff-image'
+import PropTypes from "prop-types";
 
+List.propTypes = {
+    classes: PropTypes.object.isRequired,
+    base: PropTypes.object.isRequired,
+    base_key: PropTypes.string.isRequired,
+    current: PropTypes.object.isRequired,
+    current_key: PropTypes.string.isRequired,
+    diff: PropTypes.object.isRequired,
+};
 class List extends React.Component {
     constructor(props) {
         super(props);
@@ -155,5 +162,5 @@ class List extends React.Component {
             })()}
                 </div>
     }
-};
+}
 export default withStyles(styles)(List);

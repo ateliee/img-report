@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - '8'
+  - '10'
+deploy:
+  provider: npm
+  email: 'info@ateliee.com'
+  on:
+    tags: true
+  api_key:
+    secure: '***'

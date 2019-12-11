@@ -2,7 +2,9 @@
 
 Extract image differences between directories and output HTML reports
 
-![](docs/img/screen.png)
+![](examples/img/screen.png)
+
+[See Demo Page](https://ateliee.github.io/img-report/)
 
 ## Usage
 
@@ -11,6 +13,12 @@ Extract image differences between directories and output HTML reports
 * [React 16.12.0](https://ja.reactjs.org/)
 * [Resemble.js](https://github.com/rsmbl/Resemble.js)
 * [Material-UI](https://material-ui.com/)
+
+### for Development
+
+* [ESlint](https://eslint.org/)
+* [Mocha](https://mochajs.org/)
+* [Chai.js](https://www.chaijs.com/)
 
 ## Install
 ```
@@ -39,6 +47,19 @@ img-report build -s ./assets/ -d ./dist/
 ### サーバー起動
 ```
 img-report serve -s ./assets/ -d ./dist/
+```
+
+## For Development
+
+### lint
+```
+npm run-script lint
+npm run-script lint:fix
+```
+
+### unit test
+```
+npm test
 ```
 
 ## Exmaple Images
