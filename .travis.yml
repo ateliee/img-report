@@ -5,7 +5,7 @@ node_js:
 - '10'
 deploy:
   provider: npm
-  email: info@ateliee.com
+  email: ateliee@gmail.com
   on:
     branch: master
     tags: true
