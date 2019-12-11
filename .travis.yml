@@ -1,11 +1,12 @@
 language: node_js
 node_js:
-- stable
-- '8'
-- '10'
+  - stable
+  - '8'
+  - '10'
 script:
-- echo "Running tests against $(node -v) ..."
-- npm test && nyc report --reporter=text-lcov | coveralls
+  - echo "Running tests against $(node -v) ..."
+  - npm run lint
+  - npm test && nyc report --reporter=text-lcov | coveralls
 
 jobs:
   include:
