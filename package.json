@@ -73,8 +73,12 @@
     "eslint-plugin-react": "7.17.0",
     "mocha": "6.2.2",
     "mocha-sinon": "2.1.0",
-    "nyc": "14.1.1"
+    "nyc": "14.1.1",
+    "pre-commit": "1.2.2"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "publishConfig": {
     "access": "public"
   }
