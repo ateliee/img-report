@@ -5,6 +5,7 @@ node_js:
 - '10'
 deploy:
   provider: npm
+  edge: true
   email: ateliee@gmail.com
   on:
     branch: master
