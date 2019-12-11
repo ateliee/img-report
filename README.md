@@ -1,5 +1,7 @@
 # Image Report
 
+[![Build Status](https://travis-ci.com/ateliee/img-report.svg?branch=master)](https://travis-ci.com/ateliee/img-report)
+
 Extract image differences between directories and output HTML reports
 
 ![](examples/img/screen.png)
