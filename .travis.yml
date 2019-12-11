@@ -8,6 +8,9 @@ script:
   - npm run lint
   - npm test && nyc report --reporter=text-lcov | coveralls
 
+before_install:
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+
 jobs:
   include:
   - stage: npm release
@@ -21,5 +24,4 @@ jobs:
       on:
         branch: master
         tags: true
-      api_key:
-        secure: bSHjWtCMwx1X5xtDwM1kHkOmiUKGdnhwt2HJ4x5I5jzPwB8pklRz4jROduhL4ybnfAD+X8O/UX1/zzmM6C7jKoMQUGzssg6EMGRpVGOiMMbIFkeMWVrRoAAFvOkyclrk+ByMfij4QJwRktnwYqINol0i0eseNS7sNCWkC5+cegnvYLMlrPXvBphfBuxgdalKIVuIF2TOC8n1ECrVguP+2ou1DX0yS5kCz8rlHi5AO7ufXa725OTMg2mYkXLcFTpv5noPLwEa+blRsv8898fVXVDwryEJVZ+JRoLTud6zAhOXQbR8LoLbIaLlo8ajWApeqIEy+DoSl0woZsee2KcQ55AdvFNwrvDTnmchBjN2wbF6HIhHkeNRYbqj4KwKTT/QwjflLKhbxkaxou06StrNt3fcpS3NKNKQa24NY9KmY9A6p4hNwk8EczYCKOksDEsUYZfiglfBHiAOWaUoCby/kvRQHNGU6nHb8Q5jgx9iIYFN2YxkDUkWMvFJDi51/rUdnlgmtglNyq2WLn5RxbY6AxU8aBl2dAdvyrzv6XqhNxXpu1yv5ZMDV/9+LAeZeh6Hp6u/eQzufumgL04r0eezrEOq4gP1oXdwdchIywsLyPvSAs9Lg18uk6AYxwBBPwKy6q2Bn4dHVBlhJmYQENMcpM81xQ2dzLW4ZfuvEiDg6rs=
+      api_key: $NPM_TOKEN
