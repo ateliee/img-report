@@ -19,7 +19,8 @@
     "build": "node bin/img-report build -s ./examples/assets/ -d ./examples/dist/",
     "lint": "eslint src/**/* lib/**/* bin/**/*",
     "lint:fix": "eslint src/**/* lib/**/* bin/**/* --fix",
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "travis:setup": "travis encrypt $([[ $(cat ~/.npmrc) =~ _authToken=(.*)$ ]] && echo ${BASH_REMATCH[1]}) --add deploy.api_key"
   },
   "repository": {
     "type": "git",

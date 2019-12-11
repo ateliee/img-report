@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- stable
+- '8'
+- '10'
+deploy:
+  provider: npm
+  email: info@ateliee.com
+  on:
+    branch: master
+    tags: true
+  api_key:
+    secure: RVQre4uxryVddwTqk/118ucuYXtc7/EV2g/0wsU1Ly1xUIT82tHo803noEcK8+ZEvjlrHx9B1FlgpHWjUoiPC2EuhprXchMoRLo+dozD4IWOV7A6XOpA02BYq+rGZ22vG3cHLza50LLV12lW4jmyBFOvH7XJUykDwPffNa3Tx+9rahsW2JJLRzzDh+3reX82jheX4ENRg8TIctpb9zNXPzg30wITKWCapaeBIszVI4E63DICoVXDXLZMfs1DcGL+Spoa9LkY5nNVuKPfdZ+vpFp8TuqjihGBmlkoFwd3FIWjUxVBs8T2+cEwR/KUDWGxolxcRhmvVPdlf0sqj2WIIAM+Cz4lYC2H38wWyo822bCIfoic7XbYEwVGSNJ67hj6pT0eNHMArFVD/iF9SZxfUuEsm56M3/OZRL0xHEu2K/xNwrvpSmPFwwVIuvEfHMFHuOb4VK9MsArjaocWmk1loCzGtL+rV2HCSMAFZJIhQJppOQGVuV05H3FubtLDB0KzJLU3uoZmnk5Q2ekdo6CEcgFB5JYd1Pr1j6/+6j+CkdGpsdLry7pK9udorE3+yNtT9LXbdU/R1w6cOsW1qZtPCK4xNvAYzIticWtVmyb6lozCzY973wZa49Cgw84AigLgF8nY8xwt9rMSlPREHMLL99tiKa/8G52YgWYzw1vt1H8=
