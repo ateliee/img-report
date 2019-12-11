@@ -1,6 +1,6 @@
 {
   "name": "img-report",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Extract image differences between directories and output HTML reports",
   "keywords": [
     "img-report",
@@ -19,7 +19,8 @@
     "build": "node bin/img-report build -s ./examples/assets/ -d ./examples/dist/",
     "lint": "eslint src/**/* lib/**/* bin/**/*",
     "lint:fix": "eslint src/**/* lib/**/* bin/**/* --fix",
-    "test": "mocha --recursive",
+    "test": "nyc mocha --recursive",
+    "test:cover": "nyc --reporter=lcov --reporter=text mocha --recursive",
     "travis:setup": "travis encrypt $([[ $(cat ~/.npmrc) =~ _authToken=(.*)$ ]] && echo ${BASH_REMATCH[1]}) --add deploy.api_key"
   },
   "repository": {
@@ -67,10 +68,12 @@
   },
   "devDependencies": {
     "chai": "4.2.0",
+    "coveralls": "3.0.9",
     "eslint": "6.7.2",
     "eslint-plugin-react": "7.17.0",
     "mocha": "6.2.2",
-    "mocha-sinon": "2.1.0"
+    "mocha-sinon": "2.1.0",
+    "nyc": "14.1.1"
   },
   "publishConfig": {
     "access": "public"

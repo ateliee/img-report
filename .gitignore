@@ -5,3 +5,6 @@ dist
 logs
 tmp
 !.gitkeep
+# nyc
+.nyc_output
+coverage

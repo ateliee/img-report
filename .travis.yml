@@ -5,7 +5,8 @@ node_js:
 - '10'
 script:
 - echo "Running tests against $(node -v) ..."
-- npm test
+- npm test && nyc report --reporter=text-lcov | coveralls
+
 jobs:
   include:
   - stage: npm release
