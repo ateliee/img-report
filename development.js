@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const config = require('./config');
 
 const src  = path.resolve(__dirname, 'src')
@@ -71,6 +72,7 @@ module.exports = env => {
                 DIFF_PATH: JSON.stringify(diff_path),
                 REPORT_DATA: JSON.stringify(reports)
             }),
+            new CleanWebpackPlugin(),
             new CopyPlugin([
                 { from: assets_path, to: path.resolve(dist, config.sourceImageDir) },
                 { from: diff_path, to: path.resolve(dist, config.diffImageDir) },

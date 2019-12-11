@@ -1,6 +1,6 @@
 {
   "name": "img-report",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Extract image differences between directories and output HTML reports",
   "keywords": [
     "img-report",
@@ -36,30 +36,30 @@
   },
   "homepage": "https://github.com/ateliee/img-report/",
   "dependencies": {
-    "@material-ui/core": "4.7.2",
-    "@material-ui/icons": "4.5.1",
-    "commander": "4.0.1",
-    "date-utils": "1.2.21",
-    "fs-extra": "8.1.0",
-    "lodash": "4.17.15",
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
-    "react-lazyload": "2.6.5",
-    "resemblejs": "3.2.3",
     "@babel/core": "7.7.5",
     "@babel/plugin-proposal-class-properties": "7.7.4",
     "@babel/preset-env": "7.7.5",
     "@babel/preset-react": "7.7.4",
     "@babel/register": "7.7.4",
+    "@material-ui/core": "4.7.2",
+    "@material-ui/icons": "4.5.1",
     "babel-loader": "8.0.6",
+    "clean-webpack-plugin": "3.0.0",
+    "commander": "4.0.1",
     "copy-webpack-plugin": "5.0.5",
     "css-loader": "3.2.1",
+    "date-utils": "1.2.21",
+    "fs-extra": "8.1.0",
     "html-webpack-plugin": "3.2.0",
+    "lodash": "4.17.15",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-lazyload": "2.6.5",
+    "resemblejs": "3.2.3",
     "sass-loader": "8.0.0",
     "webpack": "4.41.2",
     "webpack-cli": "3.3.10",
     "webpack-dev-server": "3.9.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
