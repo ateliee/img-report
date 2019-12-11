@@ -8,14 +8,6 @@ import styles from  '../styles/styles';
 import DiffImage from '../utils/diff-image'
 import PropTypes from "prop-types";
 
-List.propTypes = {
-    classes: PropTypes.object.isRequired,
-    base: PropTypes.object.isRequired,
-    base_key: PropTypes.string.isRequired,
-    current: PropTypes.object.isRequired,
-    current_key: PropTypes.string.isRequired,
-    diff: PropTypes.object.isRequired,
-};
 class List extends React.Component {
     constructor(props) {
         super(props);
@@ -163,4 +155,12 @@ class List extends React.Component {
                 </div>
     }
 }
+List.propTypes = {
+    classes: PropTypes.object.isRequired,
+    base: PropTypes.array.isRequired,
+    base_key: PropTypes.string.isRequired,
+    current: PropTypes.array.isRequired,
+    current_key: PropTypes.string.isRequired,
+    diff: PropTypes.object.isRequired,
+};
 export default withStyles(styles)(List);

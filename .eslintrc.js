@@ -13,7 +13,7 @@ module.exports = {
         "__dirname": true,
     },
     "parserOptions": {
-        "ecmaVersion": 2018
+        "ecmaVersion": 2017
     },
     "rules": {
     }

@@ -26,9 +26,6 @@ import theme from '../styles/theme'
 import PropTypes from 'prop-types';
 let reports = REPORT_DATA;
 
-App.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 class App extends React.Component {
     constructor(props){
         super(props);
@@ -190,4 +187,7 @@ class App extends React.Component {
         </MuiThemeProvider>;
     }
 }
+App.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
 export default withStyles(styles)(App);

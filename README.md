@@ -8,7 +8,7 @@ Extract image differences between directories and output HTML reports
 
 ## Usage
 
-* Node 10.13.*
+* Node <= 8.16.2
 * [webpack 4.41.2](https://webpack.js.org/)
 * [React 16.12.0](https://ja.reactjs.org/)
 * [Resemble.js](https://github.com/rsmbl/Resemble.js)
