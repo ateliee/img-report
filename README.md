@@ -37,6 +37,26 @@ img-report diff ./assets ./dist
 img-report diff ./assets ./dist -f
 # reportも合わせて出力
 img-report diff ./assets ./dist -r
+# config setting
+img-report diff ./assets ./dist -c config.json
+```
+
+#### config parameters examples(see Resemble.js)
+
+```
+{
+  "errorColor": {
+    "r": 255,
+    "g": 0,
+    "b": 0,
+    "a": 255
+  },
+  "errorType": "movement",
+  "transparency": 0.2,
+  "largeImageThreshold": 1200,
+  "useCrossOrigin": false,
+  "outputDiff": true
+}
 ```
 
 ### レポート出力

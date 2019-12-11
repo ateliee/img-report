@@ -15,29 +15,40 @@ program
 program
     .command('diff <src> <dist>')
     .description('create image diff.')
+    .option('-c, --config <value>', 'Resemble.js Config File Path.', String)
     .option('-f, --force', 'Force Delete Dir', Boolean)
     .option('-r, --report', 'Create report file.', Boolean)
     .action(async function (src, dist, opts) {
-            let force = (opts.force !== undefined)
-            let report = (opts.report !== undefined)
-            let src_path = path.resolve(process.cwd(), src)
-            let dist_path = path.resolve(process.cwd(), dist)
+        let force = (opts.force !== undefined)
+        let report = (opts.report !== undefined)
+        let src_path = path.resolve(process.cwd(), src)
+        let dist_path = path.resolve(process.cwd(), dist)
+        let config_path = (opts.config !== undefined) ? path.resolve(process.cwd(), opts.config) : ''
 
-            console.log('with:');
-            console.log('  - source:', src_path);
-            console.log('  - dist:', dist_path);
-            console.log('  - force:', force);
-            console.log('  - report:', report);
+        console.log(opts)
+        console.log('with:');
+        console.log('  - source:', src_path);
+        console.log('  - dist:', dist_path);
+        console.log('  - force:', force);
+        console.log('  - report:', report);
+        console.log('  - config:', opts.config);
 
-            await file.genearteDiffImages(
-                src_path,
-                dist_path,
-                force
-            );
-            if(report){
-                const result =  execSync('node '+__filename+' build -s '+src_path+' -d '+dist_path).toString();
-                console.log(result);
-            }
+        let config = null;
+        if(config_path){
+            config = require(config_path);
+            console.log(config);
+        }
+
+        await file.genearteDiffImages(
+            src_path,
+            dist_path,
+            force,
+            config_path
+        );
+        if(report){
+            const result =  execSync('node '+__filename+' build -s '+src_path+' -d '+dist_path).toString();
+            console.log(result);
+        }
     })
 ;
 // build

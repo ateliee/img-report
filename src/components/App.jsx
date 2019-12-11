@@ -179,7 +179,7 @@ class App extends React.Component {
                         current={this.getCurrent()} current_key={this.state.current_key}
                         diff={this.getCurrentDiff()} />
                     <Box textAlign="right">
-                        Template By: <a href="https://material-ui.com/" target="_blank" rel="noopener noreferrer">Material-UI</a>
+                        &copy; <a href="https://github.com/ateliee/img-report" target="_blank" rel="noopener noreferrer">ateliee/img-report</a>
                     </Box>
                 </main>
             </div>

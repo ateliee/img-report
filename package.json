@@ -14,7 +14,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "node bin/img-report diff ./examples/assets ./examples/dist -f -r",
+    "start": "node bin/img-report diff ./examples/assets ./examples/dist -f -r -c examples/config.json",
     "serve": "node bin/img-report serve -s ./examples/assets/ -d ./examples/dist/",
     "build": "node bin/img-report build -s ./examples/assets/ -d ./examples/dist/",
     "lint": "eslint src/**/* lib/**/* bin/**/*",
