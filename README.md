@@ -1,7 +1,6 @@
 # Image Report
 
 [![Build Status](https://travis-ci.com/ateliee/img-report.svg?branch=master)](https://travis-ci.com/ateliee/img-report)
-
 [![Coverage Status](https://coveralls.io/repos/github/ateliee/img-report/badge.svg?branch=master)](https://coveralls.io/github/ateliee/img-report?branch=master)
 
 Extract image differences between directories and output HTML reports
