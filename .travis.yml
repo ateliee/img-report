@@ -1,5 +1,23 @@
 language: node_js
 node_js:
-  - stable
-  - '8'
-  - '10'
+- stable
+- '8'
+- '10'
+script:
+- echo "Running tests against $(node -v) ..."
+- npm test
+jobs:
+  include:
+  - stage: npm release
+    node_js: '10'
+    script: echo "Deploying to npm ..."
+    deploy:
+      provider: npm
+      edge: true
+      email: info@ateliee.com
+      access: public
+      on:
+        branch: master
+        tags: true
+      api_key:
+        secure: M3Uxg1z7bKbwtHjwFzk8AFyEHbuXGS5uLq0+0uUSrKego5XE4129mnPA5pj38iJQVSa5feJovuSAPdHyyJ+JpY+IiODpyr8887P7NdHov53iZzwsxqiEF7ANoaKl+5C990PJ1Xx90cev76JL4e7aQvSJTXxrepKnuwl3+wpeSkqAmcvh3bn3YqPEGkD2WUvDfmNT9AAOTmnH7Ct0j0mor9HPM94F89wQrmvvNGXVugC1WA9oSFHxUk878LVeJSiIskj/4PG2PFI4bmRGu4yhkiJ6GCnlYz8nx62QDjyksihCzG9njE2F5rL/EQnp/R8oDHIu44WUvlY7owY7tK+bEWQqoeC3clPaaGVfDt3GLZTg1G2mrC5C4nLueFJsskNAxbbYyjpxbNjMYqyzerl+UY+/+s5LudnSkLvZXrMhhzlOSAQEGXypFhYTZIJ+3+CWtLR7bkAMuVoAUQcj8SUr9kNShM2VGXnB0zb6ydttAY3VQ7XQNrpQGwAu5S9bRmXQVVgpvzT/5eFQFT0uLdP0s/rB/NMkvbAX4Jwg5EIVEjSmSEf1fNKwtg2R3lgYd0n3rLiVyerb7RvqcBjyLqiEbaPlLL2PxwvKgqlZl/cPjsSzkJwQiyoYGLroNoaU8W2CPIgZgYj0kqPH7uZQeyVBI9D/Nm7hX39DgXKGBx+gQ40=
