@@ -18,10 +18,12 @@ const StyledTableCell = withStyles(theme => ({
     head: {
         backgroundColor: indigo[500],
         color: theme.palette.common.white,
-        padding: 8
+        padding: 8,
+        width: '33.3%',
     },
     body: {
         fontSize: 14,
+        textAlign: 'center',
     },
 }))(TableCell);
 
@@ -134,7 +136,7 @@ class List extends React.Component {
                                 <TableRow key={'image_' + i}>
                                     {(() => {
                                         if (this.props.diff[f] === undefined) {
-                                            return <td>Not Data</td>
+                                            return <StyledTableCell>Not Data</StyledTableCell>
                                         }
                                         let path = '/diff/' + this.props.current_key + '/' + f
                                         return <StyledTableCell>
@@ -145,7 +147,7 @@ class List extends React.Component {
                                     })()}
                                     {(() => {
                                         if (this.props.base.indexOf(f) < 0) {
-                                            return <td>Not Data</td>
+                                            return <StyledTableCell>Not Data</StyledTableCell>
                                         }
                                         let path = '/assets/' + this.props.base_key + '/' + f
                                         return <StyledTableCell>
@@ -156,7 +158,7 @@ class List extends React.Component {
                                     })()}
                                     {(() => {
                                         if (this.props.current.indexOf(f) < 0) {
-                                            return <td>Not Data</td>
+                                            return <StyledTableCell>Not Data</StyledTableCell>
                                         }
                                         let path = '/assets/' + this.props.current_key + '/' + f
                                         return <StyledTableCell>
@@ -167,11 +169,11 @@ class List extends React.Component {
                                     })()}
                                 </TableRow>
                                 <TableRow key={'data_' + i}>
-                                    <StyledTableCell colSpan="3">
+                                    <TableCell colSpan="3">
                         <pre className={this.classes.pre}>
                         <JsonDump>{this.getDiffData(f)}</JsonDump>
                         </pre>
-                                    </StyledTableCell>
+                                    </TableCell>
                                 </TableRow>
                                 </TableBody>
                             </Table>
