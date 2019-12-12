@@ -14,7 +14,7 @@ describe('Lib/file', function() {
     describe('_getDirImageList()', function() {
         it('files read check for examples/assets', function(done) {
             file._getDirImageList(__dirname+'/../../examples/assets').then((data) => {
-                expect(data).to.be.an('array').that.does.be.length(8)
+                expect(data).to.be.an('array').that.does.be.length(12)
             }).then(done, done);
         });
     });

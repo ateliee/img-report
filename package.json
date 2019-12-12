@@ -77,7 +77,8 @@
     "pre-commit": "1.2.2"
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ],
   "publishConfig": {
     "access": "public"
