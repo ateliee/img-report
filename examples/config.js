@@ -3,7 +3,7 @@ module.exports = {
     "errorColor": {
       "red": 255,
       "green": 0,
-      "blue": 0,
+      "blue": 255,
       "alpha": 255
     },
     // flat|movement|flatDifferenceIntensity|movementDifferenceIntensity|diffOnly
