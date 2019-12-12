@@ -30,10 +30,20 @@ class List extends React.Component {
         super(props);
 
         this.classes = props.classes;
+        let images = this._getImages(props);
+        this.state = {
+            images: images,
+            totals: this._getTotal(images),
+        }
+    }
+    _getImages(props){
         let images = [];
         if(props.current){
             images = _.uniq([...props.base, ...props.current]);
         }
+        return images;
+    }
+    _getTotal(images){
         let totals = {
             success: 0,
             warning: 0,
@@ -49,10 +59,7 @@ class List extends React.Component {
                 totals.error ++;
             }
         }
-        this.state = {
-            images: images,
-            totals: totals
-        }
+        return totals;
     }
     getDiffData(key){
         if(this.props.diff[key] !== undefined){
@@ -79,6 +86,21 @@ class List extends React.Component {
         base = base ? Math.pow(10, base) : 1;
         return Math.round(value * base) / base;
     }
+    totalReport(){
+        let images = this._getImages(this.props);
+        let totals = this._getTotal(images);
+        let res = [];
+        if(totals.success > 0) {
+            res.push('success:' + totals.success)
+        }
+        if(totals.warning > 0){
+            res.push('warning:' + totals.warning)
+        }
+        if(totals.error > 0){
+            res.push('error:' + totals.error)
+        }
+        return res.join('/');
+    }
     render() {
         let base_image_style = {
             'maxWidth': '100%'
@@ -86,19 +108,7 @@ class List extends React.Component {
         return <div>
             <Typography variant="h1">
                         {this.props.current_key}
-                        ({(() => {
-                            let res = [];
-                            if(this.state.totals.success > 0) {
-                                res.push('success:' + this.state.totals.success)
-                            }
-                            if(this.state.totals.warning > 0){
-                                res.push('warning:' + this.state.totals.warning)
-                            }
-                            if(this.state.totals.error > 0){
-                                res.push('error:' + this.state.totals.error)
-                            }
-                            return res.join('/');
-                        })()})
+                        ({this.totalReport()})
                     </Typography>
             {(() => {
                 if (!this.props.diff) {
