@@ -25,7 +25,6 @@ program
         let dist_path = path.resolve(process.cwd(), dist)
         let config_path = (opts.config !== undefined) ? path.resolve(process.cwd(), opts.config) : ''
 
-        console.log(opts)
         console.log('with:');
         console.log('  - source:', src_path);
         console.log('  - dist:', dist_path);
@@ -34,16 +33,22 @@ program
         console.log('  - config:', opts.config);
 
         let config = null;
+        let resemble_config = null;
         if(config_path){
             config = require(config_path);
+            console.log('config with:');
             console.log(config);
+
+            if(config.Resemble !== undefined){
+                resemble_config = config.Resemble;
+            }
         }
 
         await file.genearteDiffImages(
             src_path,
             dist_path,
             force,
-            config_path
+            resemble_config
         );
         if(report){
             const result =  execSync('node '+__filename+' build -s '+src_path+' -d '+dist_path).toString();

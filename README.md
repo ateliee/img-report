@@ -45,17 +45,20 @@ img-report diff ./assets ./dist -c config.json
 
 ```
 {
-  "errorColor": {
-    "r": 255,
-    "g": 0,
-    "b": 0,
-    "a": 255
-  },
-  "errorType": "movement",
-  "transparency": 0.2,
-  "largeImageThreshold": 1200,
-  "useCrossOrigin": false,
-  "outputDiff": true
+  "Resemble": {
+    "errorColor": {
+      "red": 0,
+      "green": 255,
+      "blue": 0,
+      "alpha": 255
+    },
+    // flat|movement|flatDifferenceIntensity|movementDifferenceIntensity|diffOnly
+    "errorType": "movement",
+    "transparency": 0.2,
+    "largeImageThreshold": 1200,
+    "useCrossOrigin": false,
+    "outputDiff": true
+  }
 }
 ```
 
