@@ -8,7 +8,10 @@ export default createMuiTheme({
         },
         h2: {
             fontSize: 20,
+            fontWeight: 'bold',
             lineHeight: 1.4,
+            marginTop: 20,
+            marginBottom: 14
         },
     }
 })

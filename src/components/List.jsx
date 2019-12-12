@@ -4,9 +4,26 @@ import JsonDump from  '../utils/jsondump';
 import _ from 'lodash';
 import { withStyles } from '@material-ui/core/styles';
 import {Typography} from '@material-ui/core';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import styles from  '../styles/styles';
+import indigo from '@material-ui/core/colors/indigo';
 import DiffImage from '../utils/diff-image'
 import PropTypes from "prop-types";
+
+const StyledTableCell = withStyles(theme => ({
+    head: {
+        backgroundColor: indigo[500],
+        color: theme.palette.common.white,
+        padding: 8
+    },
+    body: {
+        fontSize: 14,
+    },
+}))(TableCell);
 
 class List extends React.Component {
     constructor(props) {
@@ -95,59 +112,59 @@ class List extends React.Component {
                             ({this.orgRound(this.getDiffDatawMisMatchPercentage(f), 3)} %)
                         </Typography>
                         <div className="table-responsive">
-                            <table className="table">
-                                <thead>
-                                <tr>
-                                    <th>dff</th>
-                                    <th>{this.props.base_key}</th>
-                                    <th>{this.props.current_key}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr key={'image_' + i}>
+                            <Table className="table">
+                                <TableHead>
+                                <TableRow>
+                                    <StyledTableCell>dff</StyledTableCell>
+                                    <StyledTableCell>{this.props.base_key}</StyledTableCell>
+                                    <StyledTableCell>{this.props.current_key}</StyledTableCell>
+                                </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                <TableRow key={'image_' + i}>
                                     {(() => {
                                         if (this.props.diff[f] === undefined) {
                                             return <td>Not Data</td>
                                         }
                                         let path = '/diff/' + this.props.current_key + '/' + f
-                                        return <td>
+                                        return <StyledTableCell>
                                             <LazyLoad height={450} offset={100}>
                                                 <img src={encodeURIComponent(path)} style={base_image_style} />
                                             </LazyLoad>
-                                        </td>
+                                        </StyledTableCell>
                                     })()}
                                     {(() => {
                                         if (this.props.base.indexOf(f) < 0) {
                                             return <td>Not Data</td>
                                         }
                                         let path = '/assets/' + this.props.base_key + '/' + f
-                                        return <td>
+                                        return <StyledTableCell>
                                             <LazyLoad height={450} offset={100}>
                                                 <img src={encodeURIComponent(path)} style={base_image_style} />
                                             </LazyLoad>
-                                        </td>
+                                        </StyledTableCell>
                                     })()}
                                     {(() => {
                                         if (this.props.current.indexOf(f) < 0) {
                                             return <td>Not Data</td>
                                         }
                                         let path = '/assets/' + this.props.current_key + '/' + f
-                                        return <td>
+                                        return <StyledTableCell>
                                             <LazyLoad height={450} offset={100}>
                                                 <img src={encodeURIComponent(path)} style={base_image_style} />
                                             </LazyLoad>
-                                        </td>
+                                        </StyledTableCell>
                                     })()}
-                                </tr>
-                                <tr key={'data_' + i}>
-                                    <td colSpan="3">
-                        <pre>
+                                </TableRow>
+                                <TableRow key={'data_' + i}>
+                                    <StyledTableCell colSpan="3">
+                        <pre className={this.classes.pre}>
                         <JsonDump>{this.getDiffData(f)}</JsonDump>
                         </pre>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                                    </StyledTableCell>
+                                </TableRow>
+                                </TableBody>
+                            </Table>
                         </div>
                     </div>
                 }))

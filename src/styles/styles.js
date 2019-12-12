@@ -1,4 +1,6 @@
 
+import grey from '@material-ui/core/colors/grey';
+
 const drawerWidth = 300;
 export default theme => ({
     root: {
@@ -32,5 +34,13 @@ export default theme => ({
     sideListItem: {
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap'
-    }
+    },
+    pre: {
+        backgroundColor: grey[100],
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: grey[300],
+        paddingLeft: 16,
+        paddingRight: 16,
+    },
 });
