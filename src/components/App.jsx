@@ -44,8 +44,10 @@ class App extends React.Component {
         this.state = {
             current_key: current_key,
             reports: reports,
+            open: true,
             anchorEl: null,
         };
+        this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.changeCurrent = this.changeCurrent.bind(this);
@@ -77,6 +79,9 @@ class App extends React.Component {
     changeCurrent(target) {
         this.setState({current_key: target});
     }
+    handleDrawerOpen() {
+        this.setState({open: !this.state.open});
+    }
     handleClick(event) {
         this.setState({anchorEl: event.currentTarget});
     }
@@ -88,7 +93,8 @@ class App extends React.Component {
             <CssBaseline />
             <AppBar position="fixed" className={this.classes.appBar}>
                 <Toolbar>
-                    <IconButton edge="start" color="inherit" aria-label="menu">
+                    <IconButton edge="start" color="inherit" aria-label="menu"
+                                onClick={this.handleDrawerOpen}>
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" >
@@ -125,6 +131,7 @@ class App extends React.Component {
                     classes={{
                         paper: this.classes.drawerPaper,
                     }}
+                    open={this.state.open}
                 >
                     <div className={this.classes.toolbar} />
                     <UiList>
