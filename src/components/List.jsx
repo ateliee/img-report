@@ -1,4 +1,5 @@
 import React  from 'react';
+import ReactComponent from '../modules/component';
 import LazyLoad from "react-lazyload";
 import JsonDump from  '../utils/jsondump';
 import _ from 'lodash';
@@ -27,7 +28,7 @@ const StyledTableCell = withStyles(theme => ({
     },
 }))(TableCell);
 
-class List extends React.Component {
+class List extends ReactComponent {
     constructor(props) {
         super(props);
 

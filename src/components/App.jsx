@@ -1,4 +1,5 @@
 import React from "react";
+import ReactComponent from '../modules/component';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {
     AppBar,
@@ -26,7 +27,7 @@ import theme from '../styles/theme'
 import PropTypes from 'prop-types';
 let reports = REPORT_DATA;
 
-class App extends React.Component {
+class App extends ReactComponent {
     constructor(props){
         super(props);
 
@@ -47,10 +48,6 @@ class App extends React.Component {
             open: true,
             anchorEl: null,
         };
-        this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-        this.changeCurrent = this.changeCurrent.bind(this);
     }
     getCurrentDiff(){
         if(this.state.current_key !== null && this.state.reports && this.state.reports.diff){
