@@ -3,7 +3,13 @@ var chai = require('chai')
     , should = chai.should();
 var assert = require('assert');
 var file = require('../../lib/file');
+var logger = require('../../lib/logger');
+var winston = require('winston');
 const fs = require('fs');
+
+// ログレベルの変更
+logger.clear()
+    .add(new winston.transports.File({ filename: 'logs/console.log' }));
 
 describe('Lib/file', function() {
     // describe('#indexOf()', function() {

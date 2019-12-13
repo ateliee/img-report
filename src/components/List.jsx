@@ -168,13 +168,19 @@ class List extends React.Component {
                                         </StyledTableCell>
                                     })()}
                                 </TableRow>
-                                <TableRow key={'data_' + i}>
-                                    <TableCell colSpan="3">
-                        <pre className={this.classes.pre}>
+                                    <TableRow key={'data_' + i}>
+                                        <TableCell colSpan="3">
+
+                                        {(() => {
+                                        if(!this.getDiffData(f)){
+                                            return 'No Data';
+                                        }
+                                        return <pre className={this.classes.pre}>
                         <JsonDump>{this.getDiffData(f)}</JsonDump>
                         </pre>
-                                    </TableCell>
-                                </TableRow>
+                                    })()}
+                                        </TableCell>
+                                    </TableRow>
                                 </TableBody>
                             </Table>
                         </div>
