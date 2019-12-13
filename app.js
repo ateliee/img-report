@@ -1,6 +1,3 @@
+const file = require('./lib/file');
 
-const file = require('../lib/file');
-
-module.exports = {
-    file: file
-}
+module.exports = file;

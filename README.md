@@ -14,6 +14,7 @@ Extract image differences between directories and output HTML reports
 * Node <= 8.16.2
 * [webpack 4.41.2](https://webpack.js.org/)
 * [React 16.12.0](https://ja.reactjs.org/)
+* [Redux 4.0.4](https://redux-docs.netlify.com/)
 * [Resemble.js](https://github.com/rsmbl/Resemble.js)
 * [Material-UI](https://material-ui.com/)
 

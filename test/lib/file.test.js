@@ -1,7 +1,5 @@
 var chai = require('chai')
     , expect = chai.expect
-    , should = chai.should();
-var assert = require('assert');
 var file = require('../../lib/file');
 var logger = require('../../lib/logger');
 var winston = require('winston');
@@ -72,7 +70,7 @@ describe('Lib/file', function() {
         it('generate diff report from examples/assets', function(done) {
             let src = __dirname+'/../../examples/assets';
             let dist = __dirname+'/../../tmp/dist';
-            file.genearteDiffImages(src, dist, true).then((data) => {
+            file.genearteDiffImages(src, dist, true).then(() => {
                 expect(fs.existsSync(dist+'/report.json'))
                     .to.be.eq(true)
             }).then(done, done);
