@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/ateliee/img-report.svg?branch=master)](https://travis-ci.com/ateliee/img-report)
 [![Coverage Status](https://coveralls.io/repos/github/ateliee/img-report/badge.svg?branch=master)](https://coveralls.io/github/ateliee/img-report?branch=master)
+[![npm version](https://badge.fury.io/js/img-report.svg)](https://badge.fury.io/js/img-report)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 Extract image differences between directories and output HTML reports
 
