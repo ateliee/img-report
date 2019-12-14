@@ -157,7 +157,6 @@ class List extends ReactComponent {
                                         {this.props.base_key}
                                     </Typography>
                                     {(() => {
-                                        console.log(f,this.props.base, this.props.current)
                                         if (this.props.base[f] === undefined) {
                                             return <div>Not Data</div>
                                         }
