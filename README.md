@@ -1,12 +1,14 @@
 # Image Report
 
+<p align="center">
+    <img src="https://raw.githubusercontent.com/ateliee/img-report/master/examples/img/logo.png" />
+</p>
+
 [![Build Status](https://travis-ci.com/ateliee/img-report.svg?branch=master)](https://travis-ci.com/ateliee/img-report)
 [![Coverage Status](https://coveralls.io/repos/github/ateliee/img-report/badge.svg?branch=master)](https://coveralls.io/github/ateliee/img-report?branch=master)
 [![npm version](https://badge.fury.io/js/img-report.svg)](https://badge.fury.io/js/img-report)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1d6e04a6e034428abe69863e0e78752a)](https://www.codacy.com/manual/ateliee/img-report?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ateliee/img-report&amp;utm_campaign=Badge_Grade)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-
-![](examples/img/logo.png)
 
 Extract image differences between directories and output HTML reports
 
