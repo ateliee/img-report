@@ -5,3 +5,6 @@ logs/
 tmp/
 .img-report/
 node_modules/
+# nyc
+.nyc_output
+coverage

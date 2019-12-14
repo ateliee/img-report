@@ -15,7 +15,7 @@ import {
     ListItemIcon, ListItemText, Box
 } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
-import List from "./List";
+import List from "../components/List";
 import { withStyles } from '@material-ui/core/styles';
 import styles from "../styles/styles";
 import Drawer from "@material-ui/core/Drawer";

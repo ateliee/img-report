@@ -101,6 +101,9 @@ program
         proc.stdout.on('data', (data) => {
             logger.info(data.toString());
         });
+        proc.stderr.on('data', (data) => {
+            logger.error(data.toString());
+        });
         proc.on('exit', function(){
             process.exit(0);
         });
