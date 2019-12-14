@@ -6,11 +6,15 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1d6e04a6e034428abe69863e0e78752a)](https://www.codacy.com/manual/ateliee/img-report?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ateliee/img-report&amp;utm_campaign=Badge_Grade)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
+![](examples/img/logo.png)
+
 Extract image differences between directories and output HTML reports
+
+## Demo
 
 ![](examples/img/screen.png)
 
-[See Demo Page](https://ateliee.github.io/img-report/)
+[Try Now!](https://ateliee.github.io/img-report/)
 
 ## Usage
 
