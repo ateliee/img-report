@@ -18,7 +18,7 @@ describe('Lib/file', function() {
     describe('_getDirImageList()', function() {
         it('files read check for examples/assets', function(done) {
             file._getDirImageList(__dirname+'/../../examples/assets').then((data) => {
-                expect(data).to.be.an('array').that.does.be.length(12)
+                expect(data).to.be.an('object').to.have.any.keys(['example1/dir/1273160.png'])
             }).then(done, done);
         });
     });
@@ -28,7 +28,7 @@ describe('Lib/file', function() {
                 expect(data)
                     .to.be.an('object')
                     .to.have.property('example1')
-                    .that.does.be.length(4)
+                    .to.have.any.keys(['1411191.png', '1411739.png', 'dir/1273160.png'])
             }).then(done, done);
         });
     });

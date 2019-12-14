@@ -4,7 +4,7 @@ import LazyLoad from "react-lazyload";
 import JsonDump from  '../utils/jsondump';
 import _ from 'lodash';
 import { withStyles } from '@material-ui/core/styles';
-import {Typography} from '@material-ui/core';
+import {Typography, Grid, Paper} from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -14,6 +14,7 @@ import styles from  '../styles/styles';
 import indigo from '@material-ui/core/colors/indigo';
 import DiffImage from '../utils/diff-image'
 import PropTypes from "prop-types";
+import InfoData from "./list/InfoData";
 
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -32,7 +33,6 @@ class List extends ReactComponent {
     constructor(props) {
         super(props);
 
-        this.classes = props.classes;
         let images = this._getImages(props);
         this.state = {
             images: images,
@@ -40,9 +40,11 @@ class List extends ReactComponent {
         }
     }
     _getImages(props){
-        let images = [];
+        let images = {};
         if(props.current){
-            images = _.uniq([...props.base, ...props.current]);
+            // images = _.uniq([...props.base, ...props.current]);
+            images = Object.assign(images, props.base);
+            Object.assign(images, props.current);
         }
         return images;
     }
@@ -51,9 +53,9 @@ class List extends ReactComponent {
             success: 0,
             warning: 0,
             error: 0,
-        }
+        };
         for(var i in images){
-            let check = this.getDiffDataCheck(images[i])
+            let check = this.getDiffDataCheck(images[i].name)
             if(check === 1) {
                 totals.success++;
             }else if(check === 2){
@@ -107,95 +109,105 @@ class List extends ReactComponent {
     render() {
         let base_image_style = {
             'maxWidth': '100%'
-        }
+        };
+        let classes = this.props.classes;
         return <div>
             <Typography variant="h1">
                         {this.props.current_key}
                         ({this.totalReport()})
                     </Typography>
             {(() => {
-                if (!this.props.diff) {
-                    return <Typography variant="h1">レポートが存在しません</Typography>
-                }
-                return (this.state.images.map((f, i) => {
+                return (Object.keys(this.state.images).map((f, i) => {
+                    let ff = this.state.images[f];
                     return <div key={i} id={'diff'+i}>
                         <Typography variant="h2">
-                            {this.getDiffDataCheckIcon(f)}
-                            {f}
-                            ({this.orgRound(this.getDiffDatawMisMatchPercentage(f), 3)} %)
+                            <Grid container direction="row" alignItems="center" spacing={1}>
+                                {this.getDiffDataCheckIcon(f)}
+                                <Grid item>
+                                    {f}
+                                    ({this.orgRound(this.getDiffDatawMisMatchPercentage(f), 3)} %)
+                                </Grid>
+                            </Grid>
                         </Typography>
-                        <div className="table-responsive">
-                            <Table className="table">
-                                <TableHead>
-                                <TableRow>
-                                    <StyledTableCell>dff</StyledTableCell>
-                                    <StyledTableCell>{this.props.base_key}</StyledTableCell>
-                                    <StyledTableCell>{this.props.current_key}</StyledTableCell>
-                                </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                <TableRow key={'image_' + i}>
+                        <Grid container
+                              direction="row"
+                              alignItems="stretch"
+                              justify="space-between"
+                              spacing={2}>
+                            <Grid item xs>
+                                <Paper className={classes.paper} style={{height: '100%'}}>
+                                    <Typography variant="h4" component="h3">
+                                        diff
+                                    </Typography>
                                     {(() => {
                                         if (this.props.diff[f] === undefined) {
-                                            return <StyledTableCell>Not Data</StyledTableCell>
+                                            return <div>Not Data</div>
                                         }
                                         let path = '/diff/' + this.props.current_key + '/' + f
-                                        return <StyledTableCell>
-                                            <LazyLoad height={450} offset={100}>
-                                                <img src={encodeURIComponent(path)} style={base_image_style} />
-                                            </LazyLoad>
-                                        </StyledTableCell>
+                                        return <LazyLoad height={450} offset={100}>
+                                            <img src={encodeURIComponent(path)} style={base_image_style} />
+                                        </LazyLoad>
                                     })()}
+                                    <InfoData data={this.props.diff[f]} />
+                                </Paper>
+                            </Grid>
+                            <Grid item xs>
+                                <Paper className={classes.paper} style={{height: '100%'}}>
+                                    <Typography variant="h4" component="h3">
+                                        {this.props.base_key}
+                                    </Typography>
                                     {(() => {
-                                        if (this.props.base.indexOf(f) < 0) {
-                                            return <StyledTableCell>Not Data</StyledTableCell>
+                                        console.log(f,this.props.base, this.props.current)
+                                        if (this.props.base[f] === undefined) {
+                                            return <div>Not Data</div>
                                         }
                                         let path = '/assets/' + this.props.base_key + '/' + f
-                                        return <StyledTableCell>
-                                            <LazyLoad height={450} offset={100}>
-                                                <img src={encodeURIComponent(path)} style={base_image_style} />
-                                            </LazyLoad>
-                                        </StyledTableCell>
+                                        return <LazyLoad height={450} offset={100}>
+                                            <img src={encodeURIComponent(path)} style={base_image_style} />
+                                        </LazyLoad>
                                     })()}
+                                    <InfoData data={this.props.base[f]} />
+                                </Paper>
+                            </Grid>
+                            <Grid item xs>
+                                <Paper className={classes.paper} style={{height: '100%'}}>
+                                    <Typography variant="h4" component="h3">
+                                        {this.props.current_key}
+                                    </Typography>
                                     {(() => {
-                                        if (this.props.current.indexOf(f) < 0) {
-                                            return <StyledTableCell>Not Data</StyledTableCell>
+                                        if (this.props.current[f] === undefined) {
+                                            return <div>Not Data</div>
                                         }
                                         let path = '/assets/' + this.props.current_key + '/' + f
-                                        return <StyledTableCell>
-                                            <LazyLoad height={450} offset={100}>
-                                                <img src={encodeURIComponent(path)} style={base_image_style} />
-                                            </LazyLoad>
-                                        </StyledTableCell>
+                                        return <LazyLoad height={450} offset={100}>
+                                            <img src={encodeURIComponent(path)} style={base_image_style} />
+                                        </LazyLoad>
                                     })()}
-                                </TableRow>
-                                    <TableRow key={'data_' + i}>
-                                        <TableCell colSpan="3">
-
-                                        {(() => {
-                                        if(!this.getDiffData(f)){
-                                            return 'No Data';
-                                        }
-                                        return <pre className={this.classes.pre}>
+                                    <InfoData data={this.props.current[f]} />
+                                </Paper>
+                            </Grid>
+                        </Grid>
+                        <div>
+                            {(() => {
+                                if(!this.getDiffData(f)){
+                                    return 'No Data';
+                                }
+                                return <pre className={classes.pre}>
                         <JsonDump>{this.getDiffData(f)}</JsonDump>
                         </pre>
-                                    })()}
-                                        </TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
+                            })()}
                         </div>
                     </div>
                 }))
             })()}
-                </div>
+        </div>
     }
 }
 List.propTypes = {
     classes: PropTypes.object.isRequired,
-    base: PropTypes.array.isRequired,
+    base: PropTypes.object.isRequired,
     base_key: PropTypes.string.isRequired,
-    current: PropTypes.array.isRequired,
+    current: PropTypes.object.isRequired,
     current_key: PropTypes.string.isRequired,
     diff: PropTypes.object.isRequired,
 };

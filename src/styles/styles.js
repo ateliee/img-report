@@ -30,10 +30,20 @@ export default theme => ({
         flexGrow: 1,
         padding: theme.spacing(3),
     },
+    nocontent: {
+        padding: theme.spacing(10),
+        textAlign: 'center',
+
+    },
     toolbar: theme.mixins.toolbar,
     sideListItem: {
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap'
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
     },
     pre: {
         backgroundColor: grey[100],
@@ -42,5 +52,10 @@ export default theme => ({
         borderColor: grey[300],
         paddingLeft: 16,
         paddingRight: 16,
+    },
+    footer: {
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2),
+        textAlign: 'right'
     },
 });
