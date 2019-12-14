@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const config = require('./config');
+const logger = require('./lib/logger');
 
 const src  = path.resolve(__dirname, 'src')
 const dist = path.resolve(process.cwd(), '.img-report')
@@ -28,10 +29,12 @@ module.exports = env => {
     if(!diff_path){
         throw new Error('paramaters diff not found or empty.', env.diff);
     }
-    let reports = require(path.resolve(diff_path, 'report.json'));
+    assets_path = assets_path.trim();
+    diff_path = diff_path.trim();
+    logger.info('asset path:' + assets_path);
+    logger.info('diff path:' + diff_path);
 
-    console.log('asset path:', assets_path)
-    console.log('diff path:', diff_path)
+    let reports = require(path.resolve(diff_path, 'report.json'));
     return {
         mode: 'development',
         entry: src + '/index.jsx',

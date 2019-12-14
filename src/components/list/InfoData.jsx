@@ -2,7 +2,7 @@ import ReactComponent from "../../modules/component";
 import PropTypes from "prop-types";
 import {withStyles} from "@material-ui/core/styles";
 import styles from "../../styles/styles";
-import {Grid, Paper} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 import React from "react";
 
 class ImageInfo extends ReactComponent {
@@ -10,7 +10,6 @@ class ImageInfo extends ReactComponent {
         super(props);
     }
     render () {
-        let classes = this.props.classes;
         if (this.props.data === undefined ||
             this.props.data.info === undefined) {
             return <div></div>

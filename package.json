@@ -17,8 +17,8 @@
     "start": "node bin/img-report diff ./examples/assets ./examples/dist -f -r -c examples/config.js",
     "serve": "node bin/img-report serve -s ./examples/assets/ -d ./examples/dist/",
     "build": "node bin/img-report build -s ./examples/assets/ -d ./examples/dist/",
-    "lint": "eslint ./",
-    "lint:fix": "eslint ./ --fix",
+    "lint": "eslint ./ --ext .jsx,.js",
+    "lint:fix": "eslint ./ --ext .jsx,.js --fix",
     "test": "nyc mocha --recursive",
     "test:cover": "nyc --reporter=lcov --reporter=text mocha --recursive",
     "travis:setup": "travis encrypt $([[ $(cat ~/.npmrc) =~ _authToken=(.*)$ ]] && echo ${BASH_REMATCH[1]}) --add deploy.api_key"

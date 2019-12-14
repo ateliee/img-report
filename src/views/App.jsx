@@ -21,7 +21,6 @@ import styles from "../styles/styles";
 import Drawer from "@material-ui/core/Drawer";
 import UiList from "@material-ui/core/List/List";
 import PermMediaIcon from '@material-ui/icons/PermMedia';
-import _ from "lodash";
 import DiffImage from '../utils/diff-image'
 import theme from '../styles/theme'
 import PropTypes from 'prop-types';

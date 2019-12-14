@@ -3,12 +3,12 @@ const initialState = {
 }
 
 function reducer(state = initialState, action) {
-    // switch (action.type) {
-    //     case 'INCREMENT':
-    //         return state + 1
-    //     case 'DECREMENT':
-    //         return state - 1
-    // }
+    switch (action.type) {
+        case 'INCREMENT':
+            return state.value + 1
+        case 'DECREMENT':
+            return state.value - 1
+    }
     return state
 }
 

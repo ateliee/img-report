@@ -2,32 +2,25 @@ import React  from 'react';
 import ReactComponent from '../modules/component';
 import LazyLoad from "react-lazyload";
 import JsonDump from  '../utils/jsondump';
-import _ from 'lodash';
 import { withStyles } from '@material-ui/core/styles';
 import {Typography, Grid, Paper} from '@material-ui/core';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import styles from  '../styles/styles';
-import indigo from '@material-ui/core/colors/indigo';
 import DiffImage from '../utils/diff-image'
 import PropTypes from "prop-types";
 import InfoData from "./list/InfoData";
 
-const StyledTableCell = withStyles(theme => ({
-    head: {
-        backgroundColor: indigo[500],
-        color: theme.palette.common.white,
-        padding: 8,
-        width: '33.3%',
-    },
-    body: {
-        fontSize: 14,
-        textAlign: 'center',
-    },
-}))(TableCell);
+// const StyledTableCell = withStyles(theme => ({
+//     head: {
+//         backgroundColor: indigo[500],
+//         color: theme.palette.common.white,
+//         padding: 8,
+//         width: '33.3%',
+//     },
+//     body: {
+//         fontSize: 14,
+//         textAlign: 'center',
+//     },
+// }))(TableCell);
 
 class List extends ReactComponent {
     constructor(props) {
@@ -118,7 +111,6 @@ class List extends ReactComponent {
                     </Typography>
             {(() => {
                 return (Object.keys(this.state.images).map((f, i) => {
-                    let ff = this.state.images[f];
                     return <div key={i} id={'diff'+i}>
                         <Typography variant="h2">
                             <Grid container direction="row" alignItems="center" spacing={1}>
