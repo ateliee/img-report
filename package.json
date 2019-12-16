@@ -1,12 +1,15 @@
 {
   "name": "img-report",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Extract image differences between directories and output HTML reports",
   "keywords": [
-    "img-report",
+    "image",
     "report",
-    "Resemble",
-    "Material",
+    "back-end",
+    "resemble",
+    "material-ui",
+    "cli",
+    "react",
     "diff"
   ],
   "main": "app.js",
