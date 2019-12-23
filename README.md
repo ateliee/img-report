@@ -40,12 +40,12 @@ npm install ateliee/img-report --save-dev
 
 ## Howto
 
-### diff画像作成
+### diff image directory reporting
 ```
 img-report diff ./assets ./dist
-# 出力フォルダをクリア
+# clear ./dist and reporting
 img-report diff ./assets ./dist -f
-# reportも合わせて出力
+# and reporting html
 img-report diff ./assets ./dist -r
 # config setting
 img-report diff ./assets ./dist -c config.json
@@ -72,15 +72,15 @@ img-report diff ./assets ./dist -c config.json
 }
 ```
 
-### レポート出力
+### Output Image Dir Report
 
 ```
 img-report build -s ./assets/ -d ./dist/
 ```
 
-.img-reportが現在のディレクトリに作成されます。
+create current directory .img-report
 
-### サーバー起動
+### report dev server start
 ```
 img-report serve -s ./assets/ -d ./dist/
 ```
