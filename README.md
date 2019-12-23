@@ -87,6 +87,8 @@ img-report serve -s ./assets/ -d ./dist/
 
 ## For Development
 
+pre-commit lint and unit testing.
+
 ### lint
 ```
 npm run-script lint
