@@ -1,6 +1,6 @@
 {
   "name": "img-report",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Extract image differences between directories and output HTML reports",
   "keywords": [
     "image",

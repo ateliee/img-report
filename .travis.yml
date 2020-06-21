@@ -8,14 +8,12 @@ script:
   - npm run lint
   - npm test && nyc report --reporter=text-lcov | coveralls
 
-before_install:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
-
 jobs:
   include:
   - stage: npm release
     node_js: '10'
     script: echo "Deploying to npm ..."
+    before_deploy: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
     deploy:
       provider: npm
       edge: true
